@@ -1,0 +1,25 @@
+EXERCISE-1.1 OUTPUT
+
+ROLL NAME MARKS
+101 Rahul 78
+102 Sneha 91
+
+EXERCISE-1.2 OUTPUT
+
+82 Pass
+67 Pass
+49 Fail
+73 Pass
+95 Pass
+Total = 366
+Average = 73.2
+
+EXERCISE-1.3 OUTPUT
+
+Length : 17
+Upper case : VIGNAN UNIVERSITY
+First six : Vignan
+Position of U: 7
+Replace i->X: VXgnan UnXversXty
+Original : Vignan University
+level is a palindrome
