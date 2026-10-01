@@ -1,4 +1,4 @@
-program:
+  PROGRAM:
 
 class Student {
     int roll;
@@ -31,9 +31,3 @@ public class StudentDemo {
         s2.show();
     }
 }
-
-output:
-
-ROLL NAME MARKS
-101 Rahul 78
-102 Sneha 91
