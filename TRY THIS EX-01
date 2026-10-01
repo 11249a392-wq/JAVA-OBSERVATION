@@ -1,0 +1,37 @@
+    PROGRAM:
+
+import java.util.Scanner;
+
+public class HighestBill {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of students: ");
+        int n = sc.nextInt();
+
+        String highestName = "";
+        int highestBill = 0;
+
+        for (int i = 1; i <= n; i++) {
+
+            System.out.print("Enter student name: ");
+            String name = sc.next();
+
+            System.out.print("Enter bill amount: ");
+            int bill = sc.nextInt();
+
+            if (bill > highestBill) {
+                highestBill = bill;
+                highestName = name;
+            }
+        }
+
+        System.out.println("\nStudent with the highest bill:");
+        System.out.println("Name: " + highestName);
+        System.out.println("Bill: " + highestBill);
+
+        sc.close();
+    }
+}
