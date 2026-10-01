@@ -23,3 +23,21 @@ Position of U: 7
 Replace i->X: VXgnan UnXversXty
 Original : Vignan University
 level is a palindrome
+
+TRY THIS-1.2 OUTPUT:
+
+Enter number of students: 5
+Enter student name: Dhanu
+Enter bill amount: 45000
+Enter student name: Vaishu
+Enter bill amount: 50000
+Enter student name: Thrisha
+Enter bill amount: 48000
+Enter student name: Jyothi
+Enter bill amount: 78000
+Enter student name: Dhatri
+Enter bill amount: 56000
+
+Student with the highest bill:
+Name: Jyothi
+Bill: 78000
