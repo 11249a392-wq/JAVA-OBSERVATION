@@ -1,0 +1,32 @@
+EXERCISE:9.1
+
+javac BorderDemo.java
+java BorderDemo
+
+EXERCISE:9.2
+
+javac GridDemo.java
+java GridDemo
+
+EXERCISE:9.3
+
+javac FlowDemo.java
+java FlowDemo
+
+EXERCISE:9.4
+
+javac LoginForm.java
+java LoginForm
+
+Username: 11249A392
+Password: A392
+Invalid user or password
+
+TRY THIS:9.1
+
+javac ClearLoginDemo.java
+java ClearLoginDemo
+
+Username: cse
+Password: java
+Login successful
