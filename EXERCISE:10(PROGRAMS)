@@ -1,0 +1,206 @@
+PROGRAM:10.1
+
+import java.sql.*;
+public class FetchData {
+public static void main(String[] args) {
+String url = "jdbc:mysql://localhost:3306/scsvmv_lab";
+try (Connection con = DriverManager.getConnection(url, "root", "root");
+Statement st = con.createStatement();
+ResultSet rs = st.executeQuery("SELECT * FROM student")) {
+System.out.println("REG NAME MARKS");
+while (rs.next()) {
+System.out.printf("%-7s%-11s%d%n",
+rs.getString("reg_no"),
+rs.getString("name"),
+rs.getInt("marks"));
+}
+} catch (SQLException e) {
+System.out.println("Database error : " + e.getMessage());
+}
+}
+}
+
+PROGRAM:10.2
+
+import java.sql.*;
+public class InsertData {
+public static void main(String[] args) {
+String url = "jdbc:mysql://localhost:3306/scsvmv_lab";
+String sql = "INSERT INTO student VALUES (?, ?, ?)";
+try (Connection con = DriverManager.getConnection(url, "root", "root");
+PreparedStatement ps = con.prepareStatement(sql)) {
+ps.setString(1, "103");
+ps.setString(2, "Karthik");
+ps.setInt (3, 45);
+int n = ps.executeUpdate();
+System.out.println(n + " row inserted.");
+} catch (SQLException e) {
+System.out.println("Database error : " + e.getMessage());
+}
+}
+}
+
+TRY THIS:10.1
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class StudentMenu {
+
+    static final String URL =
+        "jdbc:mysql://localhost:3306/scsvmv_lab";
+    static final String USER = "root";
+    static final String PASSWORD = "";
+
+    static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+
+    static void addStudent(Scanner sc) {
+        System.out.print("Register number: ");
+        String reg = sc.nextLine();
+
+        System.out.print("Student name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Marks: ");
+        int marks = Integer.parseInt(sc.nextLine());
+
+        String sql = "INSERT INTO student VALUES (?, ?, ?)";
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, reg);
+            ps.setString(2, name);
+            ps.setInt(3, marks);
+
+            System.out.println(ps.executeUpdate() + " row inserted.");
+
+        } catch (SQLException e) {
+            System.out.println("Database error: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Marks must be a number.");
+        }
+    }
+
+    static void searchStudent(Scanner sc) {
+        System.out.print("Register number to search: ");
+        String reg = sc.nextLine();
+
+        String sql = "SELECT * FROM student WHERE reg_no = ?";
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, reg);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    System.out.println("Register No: " + rs.getString("reg_no"));
+                    System.out.println("Name       : " + rs.getString("name"));
+                    System.out.println("Marks      : " + rs.getInt("marks"));
+                } else {
+                    System.out.println("Student not found.");
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Database error: " + e.getMessage());
+        }
+    }
+
+    static void updateMarks(Scanner sc) {
+        System.out.print("Register number: ");
+        String reg = sc.nextLine();
+
+        System.out.print("New marks: ");
+        int marks;
+
+        try {
+            marks = Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Marks must be a number.");
+            return;
+        }
+
+        String sql = "UPDATE student SET marks = ? WHERE reg_no = ?";
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, marks);
+            ps.setString(2, reg);
+
+            int n = ps.executeUpdate();
+            System.out.println(n + " row(s) updated.");
+
+        } catch (SQLException e) {
+            System.out.println("Database error: " + e.getMessage());
+        }
+    }
+
+    static void deleteStudent(Scanner sc) {
+        System.out.print("Register number to delete: ");
+        String reg = sc.nextLine();
+
+        String sql = "DELETE FROM student WHERE reg_no = ?";
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, reg);
+
+            int n = ps.executeUpdate();
+            System.out.println(n + " row(s) deleted.");
+
+        } catch (SQLException e) {
+            System.out.println("Database error: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n===== STUDENT MENU =====");
+            System.out.println("1. Add Student");
+            System.out.println("2. Search Student");
+            System.out.println("3. Update Marks");
+            System.out.println("4. Delete Student");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Enter a number from 1 to 5.");
+                continue;
+            }
+
+            switch (choice) {
+                case 1:
+                    addStudent(sc);
+                    break;
+                case 2:
+                    searchStudent(sc);
+                    break;
+                case 3:
+                    updateMarks(sc);
+                    break;
+                case 4:
+                    deleteStudent(sc);
+                    break;
+                case 5:
+                    System.out.println("Exiting Student Menu. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Select 1 to 5.");
+            }
+
+        } while (choice != 5);
+
+        sc.close();
+    }
+}
