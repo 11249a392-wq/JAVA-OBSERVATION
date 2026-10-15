@@ -1,0 +1,16 @@
+EXERCISE:7.1
+File written successfully.
+
+
+EXERCISE:7.2
+ROLL  NAME      MARKS
+101   Aravind   78
+102   Divya     91
+103   Karthik   45
+
+
+TRY THIS:7.1
+ROLL  NAME      MARKS
+101   Aravind   78
+102   Divya     91
+103   Karthik   45
