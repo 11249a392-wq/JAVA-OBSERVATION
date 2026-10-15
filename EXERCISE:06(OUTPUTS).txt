@@ -1,0 +1,17 @@
+EXERCISE:6.1
+Array error : index Index 5 out of bounds for length 3
+Math error : / by zero
+Null error : the object was never created
+finally : always runs
+Program continued normally.
+
+
+EXERCISE:6.2
+Age 21 accepted
+Rejected : Age 15 is below 18
+
+TRY THIS:6.3
+Age 21 accepted
+Rejected : Age 15 is below 18
+Withdrawal of Rs. 3000.0 successful
+Transaction rejected : Daily limit is Rs. 5000
