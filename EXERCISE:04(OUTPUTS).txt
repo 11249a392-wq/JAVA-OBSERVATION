@@ -1,0 +1,16 @@
+Exercise:4.1
+Name : Meena
+Salary : 75000.0
+Dept : CSE
+
+
+EXERCISE:4.2
+Kumar -> Teacher
+Selvam -> Driver
+Raj -> Staff
+
+TRY THIS : 4.3
+PS C:\Users\Administrator\Desktop\A392> del *.class
+PS C:\Users\Administrator\Desktop\A392> javac FinalDemo.java
+PS C:\Users\Administrator\Desktop\A392> java FinalDemo
+Manager salary is fixed.
