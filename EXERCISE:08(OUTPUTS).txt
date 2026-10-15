@@ -1,0 +1,31 @@
+EXERCISE:8.1
+
+PS C:\Users\Administrator\Desktop\A392> javac HelloAppletDemo.java
+PS C:\Users\Administrator\Desktop\A392> java HelloAppletDemo
+
+EXERCISE:8.2(a)
+
+init()
+start()
+paint()
+
+IN WINDOW WE WILL SEE:
+stop()
+destroy()
+
+EXERCISE:8.2(b)
+
+javac Palette.java
+java Palette
+
+
+TRY THIS:8.1
+
+Aravind — 78
+Divya — 91
+Karthik — 45
+Ravi — 65
+Meena — 85
+
+javac BarChartDemo.java
+java BarChartDemo
