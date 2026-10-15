@@ -1,0 +1,205 @@
+PROGRAM:8.1
+
+HelloAppletDemo.java
+
+import javax.swing.*;
+import java.awt.*;
+
+public class HelloAppletDemo extends JPanel {
+
+    public HelloAppletDemo() {
+        setBackground(Color.WHITE);
+        setPreferredSize(new Dimension(300, 140));
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        g.setColor(Color.BLUE);
+        g.drawString("Welcome to SCSVMV", 30, 25);
+
+        g.setColor(Color.RED);
+        g.fillOval(30, 45, 60, 60);
+
+        g.setColor(Color.GREEN);
+        g.fillRect(110, 45, 80, 60);
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Hello Applet Demo");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new HelloAppletDemo());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+}
+
+program(HelloApplet.html):
+
+<html>
+<body>
+    <applet code="HelloApplet.class" width="300" height="140">
+    </applet>
+</body>
+</html>
+
+
+PROGRAM:8.2(a)
+
+import javax.swing.*;
+import java.awt.*;
+
+public class LifeCycle extends JPanel {
+
+    public LifeCycle() {
+        System.out.println("init()");
+    }
+
+    public void start() {
+        System.out.println("start()");
+    }
+
+    public void stop() {
+        System.out.println("stop()");
+    }
+
+    public void destroy() {
+        System.out.println("destroy()");
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        System.out.println("paint()");
+        g.drawString("Minimise and restore this window", 20, 30);
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Life Cycle Demo");
+        LifeCycle panel = new LifeCycle();
+
+        frame.add(panel);
+        frame.setSize(350, 120);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                panel.stop();
+                panel.destroy();
+                frame.dispose();
+            }
+        });
+
+        panel.start();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+}
+
+
+PROGRAM:8.2(b)
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Palette extends JPanel {
+
+    Color[] c = {
+        Color.RED,
+        Color.GREEN,
+        Color.BLUE,
+        Color.YELLOW
+    };
+
+    int sel = 0;
+
+    public Palette() {
+        setPreferredSize(new Dimension(290, 180));
+        setBackground(Color.WHITE);
+
+        addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int i = (e.getX() - 20) / 60;
+
+                if (e.getY() >= 20 && e.getY() <= 60
+                        && i >= 0 && i < 4
+                        && e.getX() >= 20) {
+                    sel = i;
+                    repaint();
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        for (int i = 0; i < c.length; i++) {
+            g.setColor(c[i]);
+            g.fillRect(20 + i * 60, 20, 50, 40);
+        }
+
+        g.setColor(c[sel]);
+        g.fillRect(20, 90, 230, 60);
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Colour Palette");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new Palette());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+}
+
+
+TRY THIS:8.1
+PROGRAM:
+
+import javax.swing.*;
+import java.awt.*;
+
+public class BarChartDemo extends JPanel {
+
+    int[] marks = {78, 91, 45, 65, 85};
+    String[] names = {"Aravind", "Divya", "Karthik", "Ravi", "Meena"};
+
+    public BarChartDemo() {
+        setPreferredSize(new Dimension(400, 300));
+        setBackground(Color.WHITE);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        g.setColor(Color.BLACK);
+        g.drawLine(40, 240, 370, 240);
+
+        for (int i = 0; i < marks.length; i++) {
+            int x = 55 + i * 65;
+            int height = marks[i] * 2;
+
+            g.setColor(Color.BLUE);
+            g.fillRect(x, 240 - height, 40, height);
+
+            g.setColor(Color.BLACK);
+            g.drawString(String.valueOf(marks[i]), x + 10, 235 - height);
+            g.drawString(names[i], x - 5, 260);
+        }
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Bar Chart");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new BarChartDemo());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+}
