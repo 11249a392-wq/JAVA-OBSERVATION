@@ -7,3 +7,9 @@ Cube of 3 = 27
 EXERCISE:2.2
 Square of 7 = 49
 Cube of 3 = 27
+
+TRY THIS:2.2
+PS C:\Users\Administrator\Desktop\A392> del *.class
+PS C:\Users\Administrator\Desktop\A392> javac Main.java
+PS C:\Users\Administrator\Desktop\A392> java Main
+Student class
