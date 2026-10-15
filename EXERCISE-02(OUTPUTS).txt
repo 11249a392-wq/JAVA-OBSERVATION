@@ -1,0 +1,9 @@
+OUTPUTS:
+
+EXERCISE:2.1
+Square of 7 = 49
+Cube of 3 = 27
+
+EXERCISE:2.2
+Square of 7 = 49
+Cube of 3 = 27
