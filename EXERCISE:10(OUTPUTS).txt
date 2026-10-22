@@ -1,0 +1,24 @@
+EXERCISE:10.1
+
+REG NAME MARKS
+101 Aravind 78
+102 Divya 91
+
+EXERCISE:10.2
+
+1 row inserted.
+Run FetchData again:
+REG NAME MARKS
+101 Aravind 78
+102 Divya 91
+103 Karthik 45
+
+TRY THIS:10.1
+
+1. Add Student
+2. Search Student
+3. Update Marks
+4. Delete Student
+5. Exit
+Enter your choice: 5
+Exiting Student Menu. Goodbye!
